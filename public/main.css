@@ -1,0 +1,58 @@
+body{
+    background-color: #222D32;
+}
+#signup_div{
+    background-color: #1A2226;
+    font-family: 'Roboto', sans-serif;
+    text-align: center;
+    
+    margin: auto;
+    width: 30%;
+    height: 10%;
+    padding: 10px;
+    /* border-radius: 3e; */
+    margin-top: 10%;
+    box-shadow: 0.5em 0.5em 0.5em 0.5em #a9a9a9;
+    color:white;
+    }
+a{
+    color: green;
+}
+
+.k{
+  text-align: left;
+}
+
+#signup_page{
+    margin: auto;
+    padding: 10px;
+    width: 50%;
+    height: 10%;
+
+}
+.user_input{
+    height: 30px;
+    width: 70%;
+    margin-top: 2em;
+    position: relative;
+}
+#register_button{
+    width: 76%;
+    height: 40px;
+    padding: 2px 2px 2px 2px;
+    font-size: medium;
+
+    position: relative;
+ 
+    margin-top: 2em;
+    position: relative;
+    text-align: center;
+    background-color:#1A2226;
+    border-color: #651fff;
+    color: white;
+    
+}
+
+
+
+

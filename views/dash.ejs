@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" >
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dashboard</title>
+    <link rel="stylesheet" href="dash.css">
+
+</head>
+<body>
+    <form method="POST">
+        <button  id="logout_button">LOGOUT</button>
+    </form>
+
+
+    <div id="name_box">Welcome: <%= pt_data.patient_name %>  !</div>
+    
+    <div id="personal_info">Personal Information</div>
+    <div id="history_info">Patient History</div>
+    <div id ="patient_info">
+        
+        <p>Patient Id</p>
+        <div id="patient_id" class="info"><%= pt_data.patient_id %></div>
+
+        <p>Mobile Number</p>
+        <div id="patient_number" class="info"><%= pt_data.phone_number %></div>
+
+        <p>Address</p>
+        <div id="patient_address" class="info"><%= pt_data.address %></div>
+        
+        <div id="appointment">
+
+            <a href="/user-list" id="book">Book Appointment</a>
+            <a href="/cancel" id="cancel"> Cancel Appointment</a>
+    
+        </div>
+    </div>
+
+<!-- generating patient history table -->
+
+    <div id="patient_history">
+        <table border="2">
+        <tr id ="heading">
+
+            <th>Doctor_ID</th>
+            <th>Referred Doctor</th>
+            <th>Reason_for_Reference</th>
+            <th>Timeslot Booked</th>
+            <th>Appointment Date</th>
+            
+        </tr>
+        <%
+        if(sqldata.length!=0){
+        var i=1;
+        sqldata.forEach(function(data){
+        %>
+        <tr >
+            <td><%= data.Doctor_ID %></td>
+            <td><%= data.Doctor_Name %></td>
+            <td><%= data.MedicalReason %></td>
+            
+            <td><%= data.Timeslot %></td>
+            <td><%= data.Date_of_Appt.toLocaleDateString() %></td>
+        </tr>
+        <%  i++; }) }%>
+    </table>
+    </div>
+
+</body>
+</html>

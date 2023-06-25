@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en">
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+<script>
+    $("document").ready(function(event){
+        $("#signup_page").on("submit",function(event){
+           $("#r").html(" ");
+            event.preventDefault();
+            var patient_name = $("#patient_name").val();
+            var dob = $("#dob").val();
+            var number = $("#number").val();
+            var address = $("#address").val();
+            var password = $("#password").val();
+            var confirm_password = $("#confirm-password").val();
+            if(password!=confirm_password)
+            {
+                $("#r").html("Please enter the <b>same</b> password twice");
+            }
+            else
+            {
+                var val = {
+                patient_name: patient_name,
+                dob: dob,
+                number: number,
+                address: address,
+                password:password,
+                };
+
+                $.ajax({
+                    url:"/signup",
+                    method: "POST",
+                    contentType: "application/json",
+                    data: JSON.stringify(val),
+                    success:function(res){
+                       $("#r").html(res);
+                    }
+                })
+            }
+        });
+    })
+
+</script>
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Signup_page</title>
+    <link rel="stylesheet" href="main.css">
+    
+</head>
+<body >
+    <div id="signup_div">
+        <h1>Signup Page</h1>
+        <form action="" method="post" id="signup_page">
+            <input type="text" id="patient_name" name="patient_name" placeholder="NAME" class="user_input" required>
+            <input type="date" id="dob" name="dob" class=" user_input" placeholder="Date of birth" required>
+
+            <input type="tel"id="number" name="number" placeholder="MOBILE NUMBER" class="user_input" required><br>
+            <input type="text"name="address" id="address" placeholder="Enter your address" class="user_input" required>
+            <input type="password" name="password" id="password" placeholder="set a password" class="user_input" required>
+            <input type="password" name="confirm-password" id="confirm-password" placeholder="Enter Password again" class="user_input" required>
+            <input type="submit" id="register_button" value="Register" ><br><br>
+            <div id="r"></div>
+
+            <p class="k">Already Have an account to login  <a href="/">Click Here</a></p>
+
+        </form>
+
+    </div>
+    
+
+</body>
+</html>

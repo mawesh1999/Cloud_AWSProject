@@ -1,0 +1,52 @@
+body{
+    background-color: #416d83
+    
+}
+#login_div{
+    text-align: center;
+    border-color: aqua;
+    background-color: rgb(116, 177, 207);
+    width: 40%;
+    height: 10%;
+    padding:10px;
+    margin:auto;
+    margin-top: 10%; 
+    color:white;
+    font-size: large;
+    box-shadow: 2px 2px 2px 2px white;
+}
+
+#login_page{
+    margin: auto;
+    padding: 10px;
+    width: 50%;
+    height: 10%;
+}
+#user_id{
+    margin-top: 2em;
+    position: relative;
+}
+
+#password{
+    margin-top: 2em;
+    position: relative;
+}
+#login_button{
+    
+    height: 40px;
+    width:80px;
+    padding: 2px 2px 2px 2px;
+    font-size: medium;
+    margin-left:70%;
+ 
+    margin-top: 2em;
+    position: relative;
+    text-align: center;
+
+
+}
+
+#r{
+    text-align: left;
+    background-color: rgb(116, 177, 207);
+}

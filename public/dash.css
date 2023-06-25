@@ -1,0 +1,193 @@
+body{
+    background-color:#2b5257;
+}
+
+#name_box{
+    position:relative;
+    padding:5px 5px 5px 5px;
+    color:   #75bd42 ;
+    font-size:large;
+    font-family:'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+    font-size: 2em;
+    size:20%;
+    height: 2em;
+    width: 20em;
+    border-radius: 2%;
+    margin-top:0.5em;
+}
+
+#personal_info{
+    width: 30%;
+    font-size:30px;
+    float:left;
+    /* postion:relative; */
+    margin-top:1em;
+    margin-left:1%;
+    color:#F2AA4CFF;
+
+}
+#history_info{
+    /* padding:1% 1% 1% 1%; */
+    float:right;
+    width: 50%;
+    font-size:30px;
+    position:relative;
+    margin-top:1em;
+    margin-left:1%;
+    text-align: left;
+    color:#F2AA4CFF;
+    overflow: auto;
+    /* background-color: #5a8cf0; */
+    
+
+}
+
+#patient_info{
+    color:  black ;
+    position:absolute;
+    /* background-color: #5a8cf0; */
+    height: 100%;
+    width:20%;
+    text-align: left;
+    margin-right:5px;
+    margin-top: 5em;
+    margin-left:1%;
+    float:left;
+    /* background-color: #75bd42; */
+    
+}
+
+#patient_info div{
+    color:  green;
+    font-family: 'Times New Roman', Times, serif;
+}
+
+#logout_button{
+    margin-right: 2%;
+    color:black;
+    position:static;
+    float: right;
+    margin-top:0.5em;
+    border: 2px solid rgb(255, 217, 0);
+    background-color: #75bd42;
+    padding:5px;
+    font-size:large;
+    border-radius: 2px;
+    box-shadow:2px 2px 2px 2px black;
+
+}
+#logout_button:hover{
+
+    cursor:move;
+    background-color: rgb(212, 66, 66);
+    
+}
+
+.info{
+    border: 4px solid silver;
+    background-color: silver;
+    width: 93%;
+    box-shadow: 1px 1px 1px 1px yellow;
+    margin-right:30%;
+    padding-right: 5% ;
+    /* height:2em; */
+    font-size:large;
+    box-shadow:2px 2px 2px 2px black;
+    text-transform: uppercase;
+    padding:0.7em 0.7em 0.7em 0.7em;
+    /* resize: both; */
+    overflow: auto;
+
+}
+
+#patient_history{
+    /* background-color: aqua; */
+    float:right;
+    height:50px;
+    width:70%;
+    /* background-color: white; */
+    padding:5px 5px 5px 5px;
+    margin-top: 3em;
+    margin-right: 2%;
+    box-shadow:2px 2px 2px 2px black;
+    height: auto;
+    overflow: auto;
+}
+table{
+    width: 100%;
+    color:antiquewhite
+    /* box-shadow:2px 2px 2px 2px black; */
+}
+table td{
+    padding:5px 5px 5px 5px;
+}
+
+#appointment{
+    position: relative;
+    /* background-color: #5a8cf0; */
+    margin-top: 10%;
+    width:100%;
+    
+
+}
+#book{
+    width:100%;
+    padding-top: 3%;
+    padding-left:30%;
+    padding-right:30%;
+    padding-bottom: 3%;
+    background-color: #2b5257;
+    height:3em;
+    border-color: #75bd42;
+    color:white;
+    font-size:medium;
+    box-shadow:2px 2px 2px 2px black;
+    text-decoration: none;
+}
+#book:active{
+    text-decoration: none;
+}
+#book:visited{
+    text-decoration: none;
+}
+#book:hover{
+    background-color: lightgreen;
+    border-color: lightgreen;
+    color:black;
+    cursor:cell;
+    padding-top: 3%;
+    padding-left:30%;
+    padding-right:30%;
+    padding-bottom: 3%;
+    text-decoration: none;
+}
+
+#cancel{
+    margin-top: 1em;
+    position: relative;
+    float:right;
+    width:100%;
+    padding:2px 2px 2px 2px;
+    /* overflow: scroll; */
+    background-color: #2b5257;
+    height:3em;
+    border-color: red;
+    color:white;
+    font-size: medium;
+    box-shadow:2px 2px 2px 2px black;
+    text-align: center;
+    text-decoration: none;
+    padding-top: 2%;
+}
+#cancel:hover{
+    background-color: lightcoral;
+    border-color: lightcoral;
+    color:black;
+}
+
+#heading{
+    color:black;
+    background-color: antiquewhite;
+    font-weight: bolder;
+}
+

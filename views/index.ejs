@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+
+<script>
+$("document").ready(function(event){
+
+
+    $("#login_page").on("submit",function(event){
+        event.preventDefault();
+        var patient_ID = $("#user_id").val();
+        var password = $("#password").val();
+        val={patient_ID:patient_ID,
+            password:password}
+
+        $.ajax({
+            url:"/",
+            method: "POST",
+            contentType: "application/json",
+            data: JSON.stringify(val),
+            success:function(res){
+                $("#r").html(res);
+            }
+        })
+    })
+
+})
+</script>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Login Page</title>
+    <link rel="stylesheet" href="./login.css">
+</head>
+<body >
+    <div id="login_div">
+        <p id =k>User Login</p>
+        <form action="" method="post" id="login_page">
+            
+            <label>Patient Id: </label>
+            <input type="text" id="user_id" name="patient_id" placeholder="Patient ID" class = "user_input" required><br>
+            <label>Password: </label>
+            <input type="password" id="password" name="password" placeholder="password" class = "user_input" required><br>
+            
+
+            <input type="submit" id="login_button" value="Login"  required><br><br>
+            <p class="k">To Create An Account  <a href="/signup">Click Here</a></p>
+            <div id="r" class="user_input"></div>
+        </form>
+
+    </div>
+    
+
+</body>
+</html>

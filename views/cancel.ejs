@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <title>Booking an Appointment</title>
+ 
+  <script src=
+  "https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js">
+      </script>
+
+</head>
+<body>
+    <div class="table-data">
+<h2>Click on Cancel to cancel your appointment</h2>
+    <table border="1">    
+        <tr>
+            <th>S.NO</th>
+            <th>Patient ID</th>
+            <th>Doctor ID</th>
+            <th>Doctor Name</th>
+            <th>Date of Appointment</th>
+            <th> Day </th>
+            
+            <th>Time Slot Booked</th>
+            <th>Reason For Reference</th>
+           
+            <th>Cancel</th>
+        </tr>
+        
+        <%
+        if(userData.length!=0){
+        var i=1;
+        userData.forEach(function(data){
+        %>
+        
+        <tr>
+            <td><%=i %></td>
+            <td class="did"><%= data.patient_id %></td>
+            <td><%=data.Doctor_ID %></td>
+            <td><%=data.Doctor_Name %></td>
+            <td><%=data.Date_Of_Appt.toLocaleDateString() %></td>
+            <td><%=data.Day %></td>
+            <td><%=data.Timeslot %></td>
+            <td><%=data.Reason%></td>
+            
+            <form method="POST" id="myForm" action='/cancel/<%= data.App_ID%>/<%= data.Doctor_ID%>/<%=data.Doctor_Name%>/<%=data.Date_Of_Appt%>/<%=data.Timeslot%>/<%=data.Reason%>/<%=data.Day%>'>
+            
+ 
+            <td><button type="submit" id="submit">Cancel Slot</button></td>
+           
+        </form>
+         
+            
+        </tr>
+    
+        <%  i++; }) %>
+        <% } else{ %>
+            <tr>
+                <td colspan="7">No Data Found</td>
+            </tr>
+        <% } %>
+    
+    </table>
+    </div>
+    <script>
+        n=document.getElementsByClassName("number_of_slots").length;
+        for(var i=0; i<n;i++)
+        {
+            var count = document.getElementsByClassName("number_of_slots")[i].innerHTML;
+            if(count==0)
+            {
+                var btnName = document.getElementsByClassName("did")[i].innerHTML + " " + document.getElementsByClassName("tslot")[i].innerHTML;
+                document.getElementsByName(btnName).forEach(e => {e.disabled = true;});
+            }
+        }
+      </script>
+    
+</body>
+</html>
+<a href="/dash"> Back To Dashboard</a>
