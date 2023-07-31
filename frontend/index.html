@@ -1,0 +1,309 @@
+<!DOCTYPE HTML>
+<html lang="en" charset="UTF-8">
+
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.1/jquery.min.js"></script>
+<script>
+	$("document").ready(function(){
+		$("#submit").on("click",function(){
+		t="<div class='wrap'><div class='circle'></div><div class='circle'></div><div class='circle'></div><div class='shadow'></div><div class='shadow'></div><div class='shadow'></div><span>Sampling Please Wait</span></div>";
+		$("#op").html(t);
+		$("#log").html(" ")
+			$.ajax({
+				url:'/',
+				method:'POST',
+				contentType: 'application/json',
+				success:function(res){
+					
+					$("#op").html(res);
+					document.getElementById("submit").innerHTML="<span>Regenerate Data for 10 patients</span>";
+					k="<div class='button-box'> <button class='twenty-one' id='sqllog1'><span>Save log</span></button></div>";
+					$("#log").html(k)
+				}
+			})
+		
+		})
+		
+		$("#submit2").on("click",function(){
+		t="<div class='wrap'><div class='circle'></div><div class='circle'></div><div class='circle'></div><div class='shadow'></div><div class='shadow'></div><div class='shadow'></div><span>Sampling Please Wait</span></div>";
+		$("#op").html(t);
+		$("#log").html(" ")
+			$.ajax({
+				url:'/sub2',
+				method:'POST',
+				contentType: 'application/json',
+				success:function(res){
+					
+					$("#op").html(res);
+					document.getElementById("submit2").innerHTML="<span>Regenerate Data for 20 patients</span>";
+					k="<div class='button-box'> <button class='twenty-one' id='sqllog2'><span>Save log</span></button></div>";
+					$("#log").html(k)
+				}
+			})
+		
+			
+		
+		})
+		      $("#log").on("click", "#sqllog1", function(){
+		      	console.log("hello")
+			    var rows = document.getElementsByTagName("table")[0].rows
+			    a=[]
+			    for(i=1;i<rows.length;i++)
+			    {   
+				str=""
+				for(j=0;j<rows[i].cells.length;j++)
+				    {
+				        str+="|"+rows[i].cells[j].innerHTML
+				    }
+				a.push(str)
+			    }
+			    console.log(a)
+			    t= JSON.stringify({key:a})
+					$.ajax({
+						url:'/sql1',
+						method:'POST',
+						contentType: 'application/json',
+				data:t,
+						success:function(res)
+				{
+							$("#log").html(res)
+						}
+					})
+				})
+			$("#log").on("click", "#sqllog2", function(){
+		      	console.log("hello")
+			    var rows = document.getElementsByTagName("table")[0].rows
+			    a=[]
+			    for(i=1;i<rows.length;i++)
+			    {   
+				str=""
+				for(j=0;j<rows[i].cells.length;j++)
+				    {
+				        str+="|"+rows[i].cells[j].innerHTML
+				    }
+				a.push(str)
+			    }
+			    console.log(a)
+			    t= JSON.stringify({key:a})
+					$.ajax({
+						url:'/sql2',
+						method:'POST',
+						contentType: 'application/json',
+				data:t,
+						success:function(res)
+				{
+							$("#log").html(res)
+						}
+					})
+				})
+	})
+</script>
+
+<style>
+body{
+
+    background:radial-gradient(#c5c3c6, #d7dedb);
+}
+.wrap{
+    width:200px;
+    height:60px;
+    position: absolute;
+    left:50%;
+    top:50%;
+    transform: translate(-50%, -50%);
+}
+.circle{
+    width:20px;
+    height:20px;
+    position: absolute;
+    border-radius: 50%;
+    background-color: #fff;
+    left:15%;
+    transform-origin: 50%;
+    animation: circle .5s alternate infinite ease;
+}
+ 
+@keyframes circle{
+    0%{
+        top:60px;
+        height:5px;
+        border-radius: 50px 50px 25px 25px;
+        transform: scaleX(1.7);
+    }
+    40%{
+        height:20px;
+        border-radius: 50%;
+        transform: scaleX(1);
+    }
+    100%{
+        top:0%;
+    }
+}
+.circle:nth-child(2){
+    left:45%;
+    animation-delay: .2s;
+}
+.circle:nth-child(3){
+    left:auto;
+    right:15%;
+    animation-delay: .3s;
+}
+.shadow{
+    width:20px;
+    height:4px;
+    border-radius: 50%;
+    background-color: rgba(0,0,0,.5);
+    position: absolute;
+    top:62px;
+    transform-origin: 50%;
+    z-index: -1;
+    left:15%;
+    filter: blur(1px);
+    animation: shadow .5s alternate infinite ease;
+}
+ 
+@keyframes shadow{
+    0%{
+        transform: scaleX(1.5);
+    }
+    40%{
+        transform: scaleX(1);
+        opacity: .7;
+    }
+    100%{
+        transform: scaleX(.2);
+        opacity: .4;
+    }
+}
+.shadow:nth-child(4){
+    left: 45%;
+    animation-delay: .2s
+}
+.shadow:nth-child(5){
+    left:auto;
+    right:15%;
+    animation-delay: .3s;
+}
+.wrap span{
+    position: absolute;
+    top:75px;
+    font-family: 'sans-serif';
+    font-size: 20px;
+    letter-spacing: 12px;
+    color: black;
+    left:15%;
+}
+ 
+ 
+* {
+    box-sizing: border-box;
+}
+ 
+.wrapper {
+    text-align:left;
+    font-family: sans-serif;
+}
+ 
+h1 {
+    text-transform: uppercase;
+}
+ 
+button {
+    width: 200px;
+    padding: 20px;
+    font-size: 20px;
+    font-weight: 700;
+    cursor: pointer;
+    border: none;
+}
+ 
+.button-box-special {
+    background: #383b3a;
+}
+ 
+button:focus {
+    outline: none;
+}
+ 
+.twenty-one {
+    background: #fff;
+    color: #009879;
+    border: 2px solid #009879;
+    text-transform: uppercase;
+    position: relative;
+    z-index: 1;
+    transition: color 400ms;
+}
+ 
+.twenty-one::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: #009879;
+    z-index: -1;
+    transition: transform 400ms ease-out;
+    transform: scaleX(0);
+    transform-origin: left;
+}
+ 
+.twenty-one:hover::before {
+   transform: scaleX(1);
+}
+ 
+.twenty-one:hover {
+    color: #fff;
+}
+ 
+/* Layout */
+ 
+.layout {
+    max-width: 900px;
+    margin: 0 auto;
+    /* border: 2px solid red; */
+    display: flex;
+    flex-flow: row wrap;
+    justify-content: left;
+}
+ 
+.button-box,
+.button-box-special {
+    width: 250px;
+    height: 150px;
+    /* border: 1px solid black; */
+    margin: 10px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+</style>
+ 
+ 
+ 
+<body>
+    <div class="wrapper">
+        <div class="layout">
+            <div class="button-box">
+                <button class="twenty-one" id="submit"><span>Generate data for top 10 susceptible patients</span></button>
+            </div>
+            <br>
+            <div class="button-box">   
+                <button class="twenty-one" id="submit2"><span>Generate data for top 20 susceptible patients</span></button>
+            </div>
+            <div class="button-box">   
+                <form action="/sqlogs" method="POST">
+                <input type="submit" value="Show logs from SQL Database">
+                </form>
+            </div>
+        </div>
+    </div>
+</body>
+
+<div id="op">
+
+
+</div>
+<div id="log">
+</div>
+</html>
